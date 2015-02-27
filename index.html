@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html >
+  <head>
+    <script src="angular.min.js"></script>
+    <script src="usersController.js"></script>
+  </head>
+  <body ng-app="AngularRG">
+    <div ng-controller="usersController">
+      <form>
+        <label>Name:</label>
+        <input type="text" ng-model="user.name" placeholder="Enter a name here" />
+        <br>
+        <label>RG:</label>
+        <input type="text" ng-model="user.rg" placeholder="Enter your rg" />
+        <input type="button" value="Ok" ng-click="add()" />
+      </form>
+      <hr>
+      <table>
+        <thead>
+          <tr>
+            <th>
+              <label>Nome</label>
+            </th>
+            <th>
+              <label>RG</label>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="user in users" >
+            <td ng-hide="user.editable">
+              <label>{{ user.name }}</label>
+            </td>
+            <td ng-show="user.editable">
+                 <input type="text" ng-model="user.name" placeholder="Enter a name here"/>
+            </td>
+            <td ng-hide="user.editable">
+              <label>{{ user.rg }}</label> 
+            </td>
+            <td ng-show="user.editable">
+                <input type="text" ng-model="user.rg" placeholder="Enter your rg" />
+            </td>
+            <td ng-hide="user.editable">
+             <input type="button" value="Delete" ng-click="delete(user)" />
+              <input type="button" value="Edit" ng-click="edit(user)" />
+            </td>
+            <td ng-show="user.editable">
+               <input type="button" value="Cancel" ng-click="cancel(user)" />
+              <input type="button" value="Save" ng-click="save(user)" />
+            </td>
+          </tr>   
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
