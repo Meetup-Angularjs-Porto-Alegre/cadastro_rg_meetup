@@ -2,21 +2,32 @@
 
 <html >
   <head>
-    <script src="angular.min.js"></script>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
     <script src="usersController.js"></script>
+    <script src="userService.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body ng-app="AngularRG">
-    <div ng-controller="usersController">
-      <form>
-        <label>Name:</label>
-        <input type="text" ng-model="user.name" placeholder="Enter a name here" />
-        <br>
-        <label>RG:</label>
-        <input type="text" ng-model="user.rg" placeholder="Enter your rg" />
-        <input type="button" value="Ok" ng-click="add()" />
+    <div ng-controller="usersController" class="container">
+      <form ng-submit="add(user)">
+        <div class="form-group">
+          <label>Name:</label>
+          <input class="form-control" type="text" ng-model="user.name" placeholder="Enter a name here" />
+        </div>     
+        <div class="form-group">
+          <label>RG:</label>
+          <input class="form-control" type="number" ng-model="user.rg" placeholder="Enter your rg" />
+          <input class="btn btn-default" type="submit" value="Ok"  />
+        </div>
       </form>
       <hr>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th>
