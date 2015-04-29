@@ -1,0 +1,50 @@
+<div ng-controller="usersController" class="container">
+      <form ng-submit="add(user)">
+        <div class="form-group">
+          <label>Name:</label>
+          <input class="form-control" type="text" ng-model="user.name" placeholder="Enter a name here" />
+        </div>     
+        <div class="form-group">
+          <label>RG:</label>
+          <input class="form-control" type="number" ng-model="user.rg" placeholder="Enter your rg" />
+          <input class="btn btn-default" type="submit" value="Ok"  />
+        </div>
+      </form>
+      <hr>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              <label>Nome</label>
+            </th>
+            <th>
+              <label>RG</label>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="user in users" >
+            <td ng-hide="user.editable">
+              <label>{{ user.name }}</label>
+            </td>
+            <td ng-show="user.editable">
+                 <input type="text" ng-model="user.name" placeholder="Enter a name here"/>
+            </td>
+            <td ng-hide="user.editable">
+              <label>{{ user.rg }}</label> 
+            </td>
+            <td ng-show="user.editable">
+                <input type="text" ng-model="user.rg" placeholder="Enter your rg" />
+            </td>
+            <td ng-hide="user.editable">
+             <input type="button" value="Delete" ng-click="delete(user)" />
+              <input type="button" value="Edit" ng-click="edit(user)" />
+            </td>
+            <td ng-show="user.editable">
+               <input type="button" value="Cancel" ng-click="cancel(user)" />
+              <input type="button" value="Save" ng-click="save(user)" />
+            </td>
+          </tr>   
+        </tbody>
+      </table>
+    </div>

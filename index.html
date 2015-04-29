@@ -4,65 +4,43 @@
   <head>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="bower_components/firebase/firebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/momentjs/moment.js"></script>
     
     <script src="usersController.js"></script>
+    <script src="encontroController.js"></script>
+    <script src="encontroService.js"></script>
     <script src="userService.js"></script>
 
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
   </head>
   <body ng-app="AngularRG">
-    <div ng-controller="usersController" class="container">
-      <form ng-submit="add(user)">
-        <div class="form-group">
-          <label>Name:</label>
-          <input class="form-control" type="text" ng-model="user.name" placeholder="Enter a name here" />
-        </div>     
-        <div class="form-group">
-          <label>RG:</label>
-          <input class="form-control" type="number" ng-model="user.rg" placeholder="Enter your rg" />
-          <input class="btn btn-default" type="submit" value="Ok"  />
+    <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Angular RG</a>
         </div>
-      </form>
-      <hr>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>
-              <label>Nome</label>
-            </th>
-            <th>
-              <label>RG</label>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr  ng-repeat="user in users" >
-            <td ng-hide="user.editable">
-              <label>{{ user.name }}</label>
-            </td>
-            <td ng-show="user.editable">
-                 <input type="text" ng-model="user.name" placeholder="Enter a name here"/>
-            </td>
-            <td ng-hide="user.editable">
-              <label>{{ user.rg }}</label> 
-            </td>
-            <td ng-show="user.editable">
-                <input type="text" ng-model="user.rg" placeholder="Enter your rg" />
-            </td>
-            <td ng-hide="user.editable">
-             <input type="button" value="Delete" ng-click="delete(user)" />
-              <input type="button" value="Edit" ng-click="edit(user)" />
-            </td>
-            <td ng-show="user.editable">
-               <input type="button" value="Cancel" ng-click="cancel(user)" />
-              <input type="button" value="Save" ng-click="save(user)" />
-            </td>
-          </tr>   
-        </tbody>
-      </table>
-    </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#/encontros">Encontros</a></li>
+            <li class="active"><a href="#">Convidados</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    <div ng-view></div>
   </body>
 </html>

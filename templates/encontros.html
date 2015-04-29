@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <form ng-submit="add(encontro)">
+   <div class="form-group">
+    <label>Name:</label>
+    <input class="form-control" type="text" ng-model="encontro.name" placeholder="Enter a name here" required/>
+  </div>     
+  <div class="form-group">
+    <label>Date:</label>
+    <input class="form-control" type="date" ng-model="encontro.data" placeholder="Enter the date here" required/>
+    <input class="btn btn-default" type="submit" value="Ok"  />
+  </div>
+</form>
+<table class="table">
+  <thead>
+    <tr>
+      <th>
+        <label>Nome</label>
+      </th>
+      <th>
+        <label>Data</label>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  ng-repeat="encontro in encontros" >
+      <td ng-hide="encontro.editable">
+        <label>{{ encontro.name }}</label>
+      </td>
+      <td ng-show="encontro.editable">
+       <input type="text" ng-model="encontro.name" placeholder="Enter a name here"/>
+     </td>
+     <td ng-hide="encontro.editable">
+      <label>{{ encontro.data }}</label> 
+      </td>
+      <td ng-show="encontro.editable">
+        <input type="date" ng-model="encontro.data" placeholder="Enter your data" />
+      </td>
+      <td ng-hide="encontro.editable">
+       <input type="button" value="Delete" ng-click="delete(encontro)" />
+       <input type="button" value="Edit" ng-click="edit(encontro)" />
+     </td>
+     <td ng-show="encontro.editable">
+       <input type="button" value="Cancel" ng-click="cancel(encontro)" />
+       <input type="button" value="Save" ng-click="save(encontro)" />
+     </td>
+   </tr>   
+  </tbody>
+</table>
+</div>

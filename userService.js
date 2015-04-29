@@ -1,4 +1,4 @@
-app.service('userService', function($firebaseArray){
+angular.module('AngularRG').service('userService', function($firebaseArray){
 
 
 	var ref = new Firebase("https://glowing-fire-237.firebaseio.com/users");
@@ -11,7 +11,6 @@ app.service('userService', function($firebaseArray){
 			rg: user.rg
 		};
 	};
-
 
 	this.user = {name: "", rg: "", editable: false};
     this.old = {};
